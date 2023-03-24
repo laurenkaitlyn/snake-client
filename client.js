@@ -20,4 +20,4 @@ const connect = function (data) {
   })
 };
 
-module.exports = connect;
+module.exports = { connect };
