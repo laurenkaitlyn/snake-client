@@ -18,6 +18,8 @@ const connect = function (data) {
   conn.on('data', (info) => {
     console.log(info)
   })
+
+  return conn;
 };
 
 module.exports = { connect };
