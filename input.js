@@ -49,6 +49,20 @@ const setInput = function (conn) {
     }
   });
 
+  //say #1
+  stdin.on('data', (key) => {
+    if (key === 'v') {
+      conn.write("Say: sup");
+    }
+  });
+
+  //say #2
+  stdin.on('data', (key) => {
+    if (key === 'f') {
+      conn.write("Say: chonky snek");
+    }
+  });
+
 
   return stdin;
 };
