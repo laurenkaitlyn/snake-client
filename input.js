@@ -2,17 +2,16 @@ const { stdin } = require('process');
 //stores the active TCP connection object
 let connection;
 
-//set up interface to handle user input from stdin
-const handleUserInput = function (key) {
-    // exit if user presses ctrl + c
-    if (key === '\u0003') {
-      process.exit();
-    }
+//lets user exit program with crtl+c
+const handleUserInput = function(key) {
+  // exit if user presses ctrl + c
+  if (key === '\u0003') {
+    process.exit();
   }
+};
 
-
-
-const setInput = function (conn) {
+//take in user input and relays that to server
+const setInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -20,13 +19,13 @@ const setInput = function (conn) {
   stdin.resume();
   stdin.on("data", handleUserInput);
 
-    
+  //tells server what keys are associated with movement or messages
   stdin.on('data', (key) => {
     //move up
     if (key === 'w') {
       conn.write("Move: up");
     }
-     //move right
+    //move right
     if (key === 'd') {
       conn.write("Move: right");
     }
